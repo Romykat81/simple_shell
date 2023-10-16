@@ -159,4 +159,70 @@ int is_delim(char, char *);
 int _atoi(char *);
 int _isalpha(int);
 
+/* _errors1.c */
+int _erratoi(char *);
+void print_error(info_t *, char *);
+int print_delim(int, int);
+char *convert_no(long int, int, int);
+void remove_comm(char *);
+
+/* _builtin.c */
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
+
+/* _builtin1.c */
+int _myhist(info_t *);
+int _myalias(info_t *);
+
+/* _getline.c */
+ssize_t get_input(info_t *);
+int _getline(info_t *, char **, size_t *);
+void sigintHandler(int);
+
+/* _getinfo.c */
+void clear_info(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
+
+/* _environ.c */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int pop_env_list(info_t *);
+
+/* _history.c */
+char *get_hist(info_t *info);
+int write_hist(info_t *info);
+int read_hist(info_t *info);
+int build_hist(info_t *info, char *buf, int lc);
+int re_hist(info_t *info);
+
+/* _getenv.c*/
+char **get_environ(info_t *);
+int _unsetenv(info_t *, char *);
+int _setenv(info_t *, char *, char *);
+
+/* _lists.c */
+list_t *add_node(list_t **, const char *, int);
+list_t *add_node_end(list_t **, const char *, int);
+size_t print_list_str(const list_t *);
+int delete_node_at_index(list_t **, unsigned int);
+void free_list(list_t **);
+
+/* _lists1.c */
+size_t list_len(const list_t *);
+char **list_to(list_t *);
+size_t print_list(const list_t *);
+list_t *node_starts(list_t *, char *, char);
+ssize_t get_node_ind(list_t *, list_t *);
+
+/* _vars.c */
+int is_chain(info_t *, char *, size_t *);
+void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int replace_alias(info_t *);
+int replace_vars(info_t *);
+int replace_string(char **, char *);
+
 #endif
