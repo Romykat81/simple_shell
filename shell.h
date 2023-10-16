@@ -45,6 +45,54 @@ typedef struct listst
 	struct listst *next;
 } list_t;
 
+/**
+ * struct pass - function ptr struct for args
+ * @arg: string of args
+ * @argv: vector for string
+ * @path: path for string
+ * @argc: count args
+ * @line_count: error counter
+ * @err_num: error code for exit
+ * @lc_flag: line of input to flag
+ * @file_name: program file
+ * @env: environment for ll
+ * @environ: cpy of env
+ * @history: history
+ * @alias: alias 
+ * @env_ch: if environ is changed
+ * @stat: status of last exec cmd
+ * @cmd_buf: addr to ptr to cmd_buf
+ * @cmd_buf_type: cmd_type ||, &&, ;
+ * @read_fd: the fd to read line input
+ * @histcount: hist line no.
+ */
+typedef struct pass
+{
+	char **arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int lc_flag;
+	char *file_name;
+	lits_t *env;
+	list_t *history;
+	lits_t *alias;
+	char **environ;
+	int env_ch;
+	int stat;
+
+	char **cmd_buf;
+	int cmd_buf_type;
+	int read_fd;
+	int histcount;
+} info_t;
+
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
+
 
 
 #endif
